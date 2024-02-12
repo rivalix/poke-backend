@@ -4,8 +4,9 @@
   "description": "Prueba Tecnica Promerica",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel-build": "echo hello"
   },
   "author": "Raul Portillo",
   "license": "ISC",
