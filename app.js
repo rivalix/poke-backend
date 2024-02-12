@@ -36,5 +36,3 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Server in running on PORT ", 3000);
 });
-
-module.exports = app;
