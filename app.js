@@ -13,10 +13,7 @@ app.use(cors());
 app.options("*", cors());
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(
-  process.env.UPLOAD_DIR,
-  express.static(__dirname + process.env.UPLOAD_DIR)
-);
+app.use(process.env.UPLOAD_DIR);
 
 //Routers
 const API = process.env.API_URL;
