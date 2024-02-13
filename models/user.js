@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const moment = require("moment");
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -8,6 +8,13 @@ const userSchema = mongoose.Schema({
   },
   birthday: {
     type: Date,
+  },
+  age: {
+    type: Number,
+  },
+  isAdult: {
+    type: Boolean,
+    default: false,
   },
   hobbie: {
     type: String,
@@ -21,6 +28,17 @@ const userSchema = mongoose.Schema({
     url: { type: String },
     name: { type: String },
   },
+});
+
+userSchema.pre("save", function (next) {
+  if (this.birthday) {
+    const age = moment().diff(this.birthday, "years");
+    if (age > 18) {
+      this.isAdult = true;
+    }
+    this.age = age;
+  }
+  next();
 });
 
 userSchema.virtual("id").get(function () {
