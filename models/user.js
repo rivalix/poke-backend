@@ -23,6 +23,7 @@ const userSchema = mongoose.Schema({
   },
   doc_identity: {
     type: String,
+    default: "",
   },
   profileImage: {
     url: { type: String },
@@ -35,6 +36,8 @@ userSchema.pre("save", function (next) {
     const age = moment().diff(this.birthday, "years");
     if (age > 18) {
       this.isAdult = true;
+    } else {
+      this.isAdult = false;
     }
     this.age = age;
   }
